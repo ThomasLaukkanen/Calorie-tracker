@@ -850,7 +850,7 @@ searchForm.addEventListener('submit', () => {
       })
       .then(response => response.json())
       .then(result => {
-        // console.log(result)
+        console.log(result)
         // CREATE THE SEARCH RESULT in as a list
         for (let i = 0; i < result.common.length; i++) {
           element = document.createElement('li')
@@ -861,9 +861,23 @@ searchForm.addEventListener('submit', () => {
           element.appendChild(link)
           link.innerHTML = result.common[i].food_name + " " + "<span id=\"grey\">" +
             result.common[i].serving_qty + " " + result.common[i].serving_unit + "</span>" + "<img src=\"" + result.common[i].photo.thumb + "\">"
-        }
 
-        //EVENT LISTENER FOR LI
+
+
+        }
+        //CREATE BRANDED FOOD LIST
+        for (let i = 0; i < result.branded.length; i++) {
+          element = document.createElement('li')
+          link = document.createElement('a')
+          link.setAttribute('href', '#tableMacros')
+          link.setAttribute('class', 'searchLinks')
+          searchResult.appendChild(element)
+          element.appendChild(link)
+          link.style.color = "#0075C4"
+          link.innerHTML = result.branded[i].brand_name_item_name + " " + "<span id=\"grey\">" +
+            result.branded[i].serving_qty + " " + result.branded[i].serving_unit + "</span>" + "<img src=\"" + result.branded[i].photo.thumb + "\">"
+        }
+        //EVENT LISTENER FOR SEARCHRESULT LIST
         let searchResultChilds = searchResult.children
         for (let i = 0; i < searchResultChilds.length; i++) {
           searchResultChilds[i].addEventListener('click', (event) => {
