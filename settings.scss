@@ -1,0 +1,28 @@
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+
+#picker {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  height: 280px;
+}
+
+#reset {
+  background-color: rgb(233, 82, 82);
+  border: none;
+  height: 30px;
+  width: 50px;
+  color: #fff;
+  border-radius: 5px;
+
+}
+
+#reset:hover {
+  background-color: blue;
+}

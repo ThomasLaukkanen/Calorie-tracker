@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalorier</title>
+  <link rel="stylesheet" href="load-awesome-1.1.0/css/ball-triangle-path.css">
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"
+    integrity="sha512-G8JE1Xbr0egZE5gNGyUm1fF764iHVfRXshIoUWCTPAbKkkItp/6qal5YAHXrxEu4HNfPTQs6HOu3D5vCGS1j3w=="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div id="hamburgerContainer" onclick="openNav()">
+        <button class="hamburger hamburger--elastic-r" type="button">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+      <a href="index.html"> <span id="logo">
+          <strong>CALORIE KING</strong></span> </a>
+
+      <a href="#" id="login">Log in</a>
+      <div id="myNav" class="overlay">
+        <section id="menu" class="overlay-content">
+          <h2>Menu</h2>
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="#">Count calories</a>
+            </li>
+            <li>
+              <a href="cities.html">Cities</a>
+            </li>
+            <li>
+              <a href="settings.html">Settings</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </nav>
+  </header>
+
+
+  <main id="mainPage">
+
+    <section id="searchFood" class="bigger">
+      <h2 class="focus-in-expand">Do you wonder what your <span id="random">food</span> contains?</h2>
+
+      <form id="searchForm" onsubmit="return false">
+        <input name="food" placeholder="What are you looking for?" type="text" id="searchBar" autocomplete="on"
+          class="slide-in-left">
+        <input type="submit" value="FIND" id="searchButton" class="flip-in-hor-bottom">
+      </form>
+      <p id="warning" class="hide slide-in-left">Please provide a phrase to search for.</p>
+      <!-- <div class="la-ball-triangle-path hide">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div> -->
+      <p id="searchResultInfo" class="hide bounce-in-top">We found these objects, choose one:</p>
+      <ul id="searchResult" class="hide">
+      </ul>
+    </section>
+
+    <div id="chartContainer"></div>
+    <table id="tableMacros" class="hide slide-in-fwd-center">
+      <tr>
+        <thead id="infoHeader" class="slide-in-fwd-center">
+          <th>
+            Name
+          </th>
+          <th>
+            Amount
+          </th>
+          <th>
+            Protein
+          </th>
+          <th>
+            Carbs
+            </td>
+          <th>
+            Fat
+          </th>
+          <th>
+            Kcal
+          </th>
+        </thead>
+      </tr>
+      <tr id="infoWeigth">
+        <td id="infoWeigthName">
+          -
+        </td>
+        <td id="infoWeigthQ">
+          -
+        </td>
+        <td id="infoWeigthP">
+          -
+        </td>
+        <td id="infoWeigthC">
+          -
+        </td>
+        <td id="infoWeigthF">
+          -
+        </td>
+        <td id="infoWeigthK">
+          -
+        </td>
+      </tr>
+    </table>
+
+    <table id="tableNut" class="hide flip-in-hor-bottom">
+      <tr>
+        <th>Nutrients</th>
+        <th>Amount</th>
+        <th>RDI</th>
+
+      </tr>
+      <tr>
+        <td id="cholesterol">Cholesterol</td>
+        <td id="cholesterolAmount">-</td>
+        <td>&#60 300 mg</td>
+      </tr>
+      <tr>
+        <td id="saturatedFat">Saturated Fat</td>
+        <td id="saturatedFatAmount">-</td>
+        <td>&#60 10% of daily calories</td>
+      </tr>
+      <tr>
+        <td id="sodium">Sodium</td>
+        <td id="sodiumAmount">-</td>
+        <td>&#60 2400 mg</td>
+      </tr>
+      <tr>
+        <td id="potassium">Potassium</td>
+        <td id="potassiumAmount">-</td>
+        <td>3,500–4,700 mg</td>
+      </tr>
+      <tr>
+        <td id="sugars">Sugars</td>
+        <td id="sugarsAmount">-</td>
+        <td>&#60 25g</td>
+      </tr>
+      <tr>
+        <td id="fiber">Fiber</td>
+        <td id="fiberAmount">-</td>
+        <td>&#60 25g</td>
+      </tr>
+
+    </table>
+
+    <table id="tableOther" class="hide">
+      <tr>
+        <th>Nutrient</th>
+        <th>Amount</th>
+      </tr>
+    </table>
+  </main>
+  <footer>
+    <a href="#">Contact us</a>
+    <a href="#">Blog</a>
+    <a href="#">Feedback</a>
+    <a href="#">Contact</a>
+    <a href="#">Cookie Preferences</a>
+    <a href="#">Terms</a>
+    <a href="#">Privacy</a>
+    <a href="#">Calorie Counter</a>
+    <br>
+    <img src="icons/iconmonstr-facebook-6.svg" alt="facebook">
+    <img src="icons/iconmonstr-instagram-11.svg" alt="facebook">
+    <img src="icons/iconmonstr-twitter-3.svg" alt="facebook">
+    <p>&copy Thomas Laukkanen</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

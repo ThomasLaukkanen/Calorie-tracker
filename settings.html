@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+
+  <link rel="stylesheet" href="settings.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"
+    integrity="sha512-G8JE1Xbr0egZE5gNGyUm1fF764iHVfRXshIoUWCTPAbKkkItp/6qal5YAHXrxEu4HNfPTQs6HOu3D5vCGS1j3w=="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div id="hamburgerContainer" onclick="openNav()">
+        <button class="hamburger hamburger--elastic-r" type="button">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+      <a href="index.html"> <span id="logo">
+          <strong>CALORIE KING</strong></span> </a>
+      <a href="#" id="login">Log in</a>
+      <div id="myNav" class="overlay">
+        <section id="menu" class="overlay-content">
+          <h2>Menu</h2>
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="#">Count calories</a>
+            </li>
+            <li>
+              <a href="cities.html">Cities</a>
+            </li>
+            <li>
+              <a href="settings.html">Settings</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <section>
+      <form>
+        <h2>Settings</h2>
+        <label for="bgcolor">Choose background color:</label>
+        <input class="color" id="bgcolor">
+        <br>
+        <label for="resetColor">Default color:</label>
+        <button id="reset">Reset</button>
+        <div id="picker"></div>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <a href="#">Contact us</a>
+    <a href="#">Blog</a>
+    <a href="#">Feedback</a>
+    <a href="#">Contact</a>
+    <a href="#">Cookie Preferences</a>
+    <a href="#">Terms</a>
+    <a href="#">Privacy</a>
+    <a href="#">Calorie Counter</a>
+    <br>
+    <img src="icons/iconmonstr-facebook-6.svg" alt="facebook">
+    <img src="icons/iconmonstr-instagram-11.svg" alt="facebook">
+    <img src="icons/iconmonstr-twitter-3.svg" alt="facebook">
+    <p>&copy Thomas Laukkanen</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+
+  <script src="index.js"></script>
+  <script src="settings.js"></script>
+</body>
+
+</html>
