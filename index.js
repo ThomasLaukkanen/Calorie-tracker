@@ -800,6 +800,9 @@ let nutrients = [{
   }
 ]
 let nutrient
+let searchLinkSecond
+let searchMethod
+let searchBody
 
 // EVENTLISTENER FOR BUTTON
 searchForm.addEventListener('submit', () => {
@@ -828,15 +831,14 @@ searchForm.addEventListener('submit', () => {
       chartContainer.removeChild(document.querySelector('#myChart'))
     }
     let tableOther = document.querySelector("#tableOther")
+
     //remove Other nutrients
     if (tableOther.contains(document.querySelector('#tableOther tr'))) {
 
       while (tableOther.children.length > 1) {
         tableOther.removeChild(tableOther.lastElementChild)
       }
-
     }
-
 
     //NUTRIONIX Search for objects
     fetch(searchLink, {
@@ -850,7 +852,7 @@ searchForm.addEventListener('submit', () => {
       })
       .then(response => response.json())
       .then(result => {
-        // console.log(result)
+        console.log(result)
         // CREATE THE SEARCH RESULT in as a list
         for (let i = 0; i < result.common.length; i++) {
           element = document.createElement('li')
@@ -860,17 +862,29 @@ searchForm.addEventListener('submit', () => {
           searchResult.appendChild(element)
           element.appendChild(link)
           link.innerHTML = result.common[i].food_name + " " + "<span id=\"grey\">" +
-            result.common[i].serving_qty + " " + result.common[i].serving_unit + "</span>" + "<img src=\"" + result.common[i].photo.thumb + "\">"
+            result.common[i].serving_qty + " " + result.common[i].serving_unit + "</span>" + "<img src=\"" + result.common[i].photo.thumb + "\">" + "<span class=\"searchId hide\">" + 'name' + "</span>"
         }
+        //CREATE BRANDED FOOD LIST
+        for (let i = 0; i < result.branded.length; i++) {
+          element = document.createElement('li')
+          link = document.createElement('a')
+          link.setAttribute('href', '#tableMacros')
+          link.setAttribute('class', 'searchLinks')
+          searchResult.appendChild(element)
+          element.appendChild(link)
+          link.style.color = "#0075C4"
 
-        //EVENT LISTENER FOR LI
+          link.innerHTML = result.branded[i].food_name + "<span class=\"brandName\">" + " " + result.branded[i].brand_name + "</span>" +
+            " " + "<span id=\"grey\">" +
+            result.branded[i].serving_qty + " " + result.branded[i].serving_unit + "</span>" + "<img src=\"" + result.branded[i].photo.thumb + "\">" + "<span class=\"searchId hide\">" + result.branded[i].nix_item_id + "</span>"
+        }
+        //EVENT LISTENER FOR SEARCHRESULT LIST
         let searchResultChilds = searchResult.children
         for (let i = 0; i < searchResultChilds.length; i++) {
           searchResultChilds[i].addEventListener('click', (event) => {
 
             if (event.originalTarget
               .classList.contains("searchLinks")) {
-
               document.querySelector('#tableMacros').classList.remove('hide')
               document.querySelector('#tableNut').classList.remove('hide')
               document.querySelector('#tableOther').classList.remove('hide')
@@ -879,17 +893,30 @@ searchForm.addEventListener('submit', () => {
               searchResult.classList.add('hide')
               document.querySelector('#searchFood > p').classList.add('hide')
 
-              let searchObjekt = event.originalTarget.childNodes[0].textContent
+
+
+              let searchObjekt = event.originalTarget.firstChild.textContent
+              console.log('SearchObjekt is:', searchObjekt)
+              // check if clicked item is common or branded food will change fetch
+              if (event.target.lastChild.textContent === "name") {
+                searchLinkSecond = "https://trackapi.nutritionix.com/v2/natural/nutrients"
+                searchMethod = 'post'
+                searchBody = `{\"query\":\"${searchObjekt}\"}`
+              } else {
+                searchLinkSecond = "https://trackapi.nutritionix.com/v2/search/item?nix_item_id=" + event.target.lastChild.textContent
+                searchMethod = 'get'
+                searchBody = undefined
+              }
               // SEARCH MOORE MACROS
-              fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
-                  body: `{"query":"${searchObjekt}"}`,
+              fetch(searchLinkSecond, {
+                  body: searchBody,
                   headers: {
                     'Content-Type': 'application/json',
                     'x-app-id': 'b7350e28',
                     'x-app-key': 'a9872f0652059dabb8e8588e1258f45b',
                     'x-remote-user-id': '0'
                   },
-                  method: 'post'
+                  method: searchMethod
                 })
                 .then(response => response.json())
                 .then(result => {
@@ -929,12 +956,11 @@ searchForm.addEventListener('submit', () => {
                     for (let s = 0; s < nutrients.length; s++) {
 
                       if (result.foods[0].full_nutrients[n].attr_id === nutrients[s].attr_id) {
-
                         nutrient = nutrients.find(nutrient => nutrient.attr_id === result.foods[0].full_nutrients[n].attr_id)
                         // console.log(nutrient.name, result.foods[0].full_nutrients[n].value, nutrient.unit)
-
                       }
                     }
+
                     //New rows for other nutrients 
                     let tableRow = document.createElement('tr')
                     document.querySelector('#tableOther').appendChild(tableRow)
@@ -952,9 +978,6 @@ searchForm.addEventListener('submit', () => {
                   //CREATE CANVAS AFTER LINK IS CLICKED
                   let chartCanvas = document.createElement('canvas')
                   chartCanvas.setAttribute('id', 'myChart')
-                  //create table for macros
-                  let table = document.querySelector('#tableMacros')
-
 
                   // document.querySelector('main').insertBefore(chartCanvas, table)
                   document.querySelector('#chartContainer').appendChild(chartCanvas)
@@ -980,11 +1003,8 @@ searchForm.addEventListener('submit', () => {
                   });
                 })
             }
-
           })
         }
-        //SLUTAR
-
       })
   }
 })
@@ -993,4 +1013,4 @@ searchForm.addEventListener('submit', () => {
 
 window.setInterval(function () {
   document.querySelector('#random').style.color = '#' + (0x1000000 + (Math.random()) * 0xffffff).toString(16).substr(1, 6)
-}, 2000);
+}, 1000);

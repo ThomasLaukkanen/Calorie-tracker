@@ -182,6 +182,10 @@ main {
   margin-left: 20px;
 }
 
+.brandName {
+  color: #000;
+}
+
 #tableMacros {
   width: 100%;
   margin: 50px auto;
