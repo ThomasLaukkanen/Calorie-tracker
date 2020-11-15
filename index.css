@@ -206,6 +206,10 @@ main {
   text-transform: capitalize;
 }
 
+#infoWeightInput {
+  width: 70px;
+}
+
 #myChart {
   display: none;
 }

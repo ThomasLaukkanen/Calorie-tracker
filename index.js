@@ -36,6 +36,7 @@ let searchBar = document.querySelector('#searchBar')
 let searchButton = document.querySelector('#searchButton')
 let searchForm = document.querySelector('#searchForm')
 let chartContainer = document.querySelector('#chartContainer')
+let infoWeightInput = document.querySelector('#infoWeightInput')
 
 let searchLink
 let element
@@ -808,7 +809,7 @@ let searchBody
 searchForm.addEventListener('submit', () => {
 
   //Check if searchbar is empty
-  if (searchBar.value === "") {
+  if (searchBar.value === "" || searchBar.value.match(/^\s*$/)) {
     //Show warning
     document.querySelector('#warning').classList.remove('hide')
   } else {
@@ -839,6 +840,10 @@ searchForm.addEventListener('submit', () => {
         tableOther.removeChild(tableOther.lastElementChild)
       }
     }
+    //Remove Weight options
+    document.querySelector('#infoWeightSelect').textContent = ""
+    document.querySelector('#infoWeightInput').value = ""
+
 
     //NUTRIONIX Search for objects
     fetch(searchLink, {
@@ -925,7 +930,26 @@ searchForm.addEventListener('submit', () => {
                   // CHANGE INFO ON TABLES
                   document.querySelector('#infoWeigthName').textContent = result.foods[0].food_name
 
-                  document.querySelector('#infoWeigthQ').textContent = result.foods[0].serving_qty + " " + result.foods[0].serving_unit
+                  //primary quantiy in select
+                  let optionPrimary = document.createElement("option")
+                  document.querySelector('#infoWeightSelect').appendChild(optionPrimary)
+                  optionPrimary.textContent = result.foods[0].serving_unit
+
+                  //loop alternative nutrients
+                  if (result.foods[0].alt_measures !== null) {
+
+                    for (let i = 0; i < result.foods[0].alt_measures.length; i++) {
+                      if (result.foods[0].alt_measures[i].measure !== document.querySelector('#infoWeightSelect').firstChild.innerHTML) {
+                        let optionElement = document.createElement('option')
+                        optionElement.textContent = result.foods[0].alt_measures[i].measure
+                        document.querySelector("#infoWeightSelect").appendChild(optionElement)
+
+                      }
+                    }
+                  }
+
+
+                  document.querySelector('#infoWeightInput').value = result.foods[0].serving_qty
 
                   protein = result.foods[0].nf_protein
                   document.querySelector('#infoWeigthP').textContent = protein + 'g'
@@ -957,7 +981,7 @@ searchForm.addEventListener('submit', () => {
 
                       if (result.foods[0].full_nutrients[n].attr_id === nutrients[s].attr_id) {
                         nutrient = nutrients.find(nutrient => nutrient.attr_id === result.foods[0].full_nutrients[n].attr_id)
-                        // console.log(nutrient.name, result.foods[0].full_nutrients[n].value, nutrient.unit)
+                        //console.log(nutrient.name, /*result.foods[0].full_nutrients[n].value, nutrient.unit*/ )
                       }
                     }
 
@@ -1008,6 +1032,8 @@ searchForm.addEventListener('submit', () => {
       })
   }
 })
+
+
 
 
 

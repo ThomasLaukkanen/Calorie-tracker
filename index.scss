@@ -179,6 +179,7 @@ main {
   color: #000;
 }
 
+//TABLE MACROS
 #tableMacros {
   width: 100%;
   margin: 50px auto;
@@ -200,11 +201,19 @@ main {
   }
 }
 
+#infoWeightInput {
+  width: 70px;
+}
+
+
+
+//CHART
 
 #myChart {
   display: none;
 }
 
+//TABLE NUTRIENTS
 #tableNut {
   width: 100%;
   text-align: center;
