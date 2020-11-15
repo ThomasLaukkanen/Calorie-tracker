@@ -28,8 +28,6 @@ function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
 
-
-
 //Variables
 let searchResult = document.querySelector('#searchResult')
 let searchBar = document.querySelector('#searchBar')
@@ -813,7 +811,7 @@ searchForm.addEventListener('submit', () => {
     //Show warning
     document.querySelector('#warning').classList.remove('hide')
   } else {
-    // document.getElementsByClassName('.la-ball-triangle-path').classList.remove('hide')
+    // document.getElemen1213
 
     document.querySelector('#searchFood').classList.remove('bigger')
     searchLink = "https://trackapi.nutritionix.com/v2/search/instant?query=" + searchBar.value
@@ -832,12 +830,13 @@ searchForm.addEventListener('submit', () => {
       chartContainer.removeChild(document.querySelector('#myChart'))
     }
     let tableOther = document.querySelector("#tableOther")
+    let tableOtherBody = document.querySelector("#tableOtherBody")
 
     //remove Other nutrients
     if (tableOther.contains(document.querySelector('#tableOther tr'))) {
 
-      while (tableOther.children.length > 1) {
-        tableOther.removeChild(tableOther.lastElementChild)
+      while (tableOtherBody.children.length > 0) {
+        tableOtherBody.removeChild(tableOtherBody.lastElementChild)
       }
     }
     //Remove Weight options
@@ -930,7 +929,7 @@ searchForm.addEventListener('submit', () => {
                   // CHANGE INFO ON TABLES
                   document.querySelector('#infoWeigthName').textContent = result.foods[0].food_name
 
-                  //primary quantiy in select
+                  //primary quantity in select
                   let optionPrimary = document.createElement("option")
                   document.querySelector('#infoWeightSelect').appendChild(optionPrimary)
                   optionPrimary.textContent = result.foods[0].serving_unit
@@ -987,7 +986,7 @@ searchForm.addEventListener('submit', () => {
 
                     //New rows for other nutrients 
                     let tableRow = document.createElement('tr')
-                    document.querySelector('#tableOther').appendChild(tableRow)
+                    document.querySelector('#tableOtherBody').appendChild(tableRow)
                     tableRow.setAttribute('class', 'OtherNutrients')
                     let tableData1 = document.createElement('td')
                     let tableData2 = document.createElement('td')

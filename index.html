@@ -80,20 +80,18 @@
         <input type="submit" value="FIND" id="searchButton" class="flip-in-hor-bottom">
       </form>
       <p id="warning" class="hide slide-in-left">Please provide a phrase to search for.</p>
-      <!-- <div class="la-ball-triangle-path hide">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div> -->
       <p id="searchResultInfo" class="hide bounce-in-top">We found these objects, choose one:</p>
       <ul id="searchResult" class="hide">
       </ul>
     </section>
 
+    <!-- CHART -->
     <div id="chartContainer"></div>
+
+    <!-- TABLE MACROS -->
     <table id="tableMacros" class="hide slide-in-fwd-center">
-      <tr>
-        <thead id="infoHeader" class="slide-in-fwd-center">
+      <thead id="infoHeader" class="slide-in-fwd-center">
+        <tr>
           <th>
             Name
           </th>
@@ -112,8 +110,8 @@
           <th>
             Kcal
           </th>
-        </thead>
-      </tr>
+        </tr>
+      </thead>
       <tr id="infoWeigth">
         <td id="infoWeigthName">
           -
@@ -121,7 +119,6 @@
         <td id="infoWeigthQ">
           <input type="number" id="infoWeightInput" value="" min="0">
           <select name="Weigth" id="infoWeightSelect">
-            <!-- <option value="gram" id="infoWeightOptionOne">-</option> -->
           </select>
         </td>
         <td id="infoWeigthP">
@@ -139,53 +136,63 @@
       </tr>
     </table>
 
+    <!-- TABLE NUTRIENTS -->
     <table id="tableNut" class="hide flip-in-hor-bottom">
-      <tr>
-        <th>Nutrients</th>
-        <th>Amount</th>
-        <th>RDI</th>
-
-      </tr>
-      <tr>
-        <td id="cholesterol">Cholesterol</td>
-        <td id="cholesterolAmount">-</td>
-        <td>&#60 300 mg</td>
-      </tr>
-      <tr>
-        <td id="saturatedFat">Saturated Fat</td>
-        <td id="saturatedFatAmount">-</td>
-        <td>&#60 10% of daily calories</td>
-      </tr>
-      <tr>
-        <td id="sodium">Sodium</td>
-        <td id="sodiumAmount">-</td>
-        <td>&#60 2400 mg</td>
-      </tr>
-      <tr>
-        <td id="potassium">Potassium</td>
-        <td id="potassiumAmount">-</td>
-        <td>3,500–4,700 mg</td>
-      </tr>
-      <tr>
-        <td id="sugars">Sugars</td>
-        <td id="sugarsAmount">-</td>
-        <td>&#60 25g</td>
-      </tr>
-      <tr>
-        <td id="fiber">Fiber</td>
-        <td id="fiberAmount">-</td>
-        <td>&#60 25g</td>
-      </tr>
-
+      <thead>
+        <tr>
+          <th>Nutrients</th>
+          <th>Amount</th>
+          <th>RDI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="cholesterol">Cholesterol</td>
+          <td id="cholesterolAmount">-</td>
+          <td>&#60 300 mg</td>
+        </tr>
+        <tr>
+          <td id="saturatedFat">Saturated Fat</td>
+          <td id="saturatedFatAmount">-</td>
+          <td>&#60 10% of daily calories</td>
+        </tr>
+        <tr>
+          <td id="sodium">Sodium</td>
+          <td id="sodiumAmount">-</td>
+          <td>&#60 2400 mg</td>
+        </tr>
+        <tr>
+          <td id="potassium">Potassium</td>
+          <td id="potassiumAmount">-</td>
+          <td>3,500–4,700 mg</td>
+        </tr>
+        <tr>
+          <td id="sugars">Sugars</td>
+          <td id="sugarsAmount">-</td>
+          <td>&#60 25g</td>
+        </tr>
+        <tr>
+          <td id="fiber">Fiber</td>
+          <td id="fiberAmount">-</td>
+          <td>&#60 25g</td>
+        </tr>
+      </tbody>
     </table>
 
+    <!-- TABLE OTHER -->
     <table id="tableOther" class="hide">
-      <tr>
-        <th>Nutrient</th>
-        <th>Amount</th>
-      </tr>
+      <thead>
+        <tr>
+          <th>Nutrient</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody id="tableOtherBody">
+      </tbody>
     </table>
   </main>
+
+  <!-- FOOTER -->
   <footer>
     <a href="#">Contact us</a>
     <a href="#">Blog</a>
