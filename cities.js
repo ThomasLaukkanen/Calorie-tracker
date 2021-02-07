@@ -90,6 +90,7 @@ document.querySelector('#buttonPost').addEventListener('click', event => {
   console.log(event.target.id)
 
 
+
   fetch('https://avancera.app/cities/', {
       body: JSON.stringify({
         name: inputCity,
