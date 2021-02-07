@@ -1,8 +1,0 @@
-LINK NUTRIENT NAMES FOR LINKS TO WIKIPEDIA WHERE YOU CAN LEARN MOORE
-add progress bar with % for each nutrient and rdi
-Add function that ask for how full you are after you ate
-add function that asks you how did you sleep
-add function that let you add notes for body observation
-add eating timer.
-change right elements to tables.
-channge design
